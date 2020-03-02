@@ -10,6 +10,7 @@ Rutas:
 
 - Instalar las dependencias `npm install`
 - Ejecutar el Cliente `ng serve`
+
 - Ejecutar el Servicor (dentro de la carpeta `backend`)
-      - `nodemon server` para iniciar el servidor
-      - `mongod` para iniciar la base de datos
+- `nodemon server` para iniciar el servidor
+- `mongod` para iniciar la base de datos
