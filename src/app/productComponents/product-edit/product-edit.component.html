@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+  <div class="col-md-4 register-product">
+
+    <!-- formulario de actualizacion -->
+    <div class="card card-outline-secondary">
+      <div class="card-header">
+        <h3 class="mb-0">Editar Producto</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+          <div class="form-group">
+            <label for="inputName">Nombre del Producto</label>
+            <input class="form-control" type="text" formControlName="nombre">
+            <!-- mensaje de error -->
+            <div class="invalid-feedback" *ngIf="submitted && myForm.nombre.errors?.required">
+              Ingrese el Nombre.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputPassword3">Tipo</label>
+            <select class="custom-select form-control" (change)="updateType($event.target.value)" formControlName="tipo">
+              <option value="">elija la Categoria...</option>
+              <option *ngFor="let productType of ProductType" value="{{productType}}">{{productType}}
+              </option>
+            </select>
+            <!-- mensaje de error -->
+            <div class="invalid-feedback" *ngIf="submitted && myForm.tipo.errors?.required">
+              seleccione el tipo.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputVerify3">Precio $</label>
+            <input class="form-control" type="text" formControlName="precio">
+            <!-- mensajes de error -->
+            <div class="invalid-feedback" *ngIf="submitted && myForm.precio.errors?.required">
+              Ingrese el Precio.
+            </div>
+            <div class="invalid-feedback" *ngIf="submitted && myForm.precio.errors?.pattern">
+              Solo se permiten Numeros.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputVerify3">Cantidad en Stock</label>
+            <input class="form-control" type="text" formControlName="cantidad">
+            <!-- mensajes de error -->
+            <div class="invalid-feedback" *ngIf="submitted && myForm.cantidad.errors?.required">
+              Ingrese la Cantidad.
+            </div>
+            <div class="invalid-feedback" *ngIf="submitted && myForm.cantidad.errors?.pattern">
+              Solo se permiten Numeros.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button class="btn btn-success btn-lg btn-block" type="submit">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+  </div>
+</div>
+

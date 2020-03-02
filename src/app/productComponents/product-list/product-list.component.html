@@ -1,0 +1,39 @@
+<div class="container">
+  <!-- formulario de busqueda -->
+  <div class="form-group">
+    <input [(ngModel)]="queryString" type="text" class="form-control" placeholder="Digite la Categoria..." >
+  </div>
+    
+    <p *ngIf="Product.length <= 0" class="no-data text-center">No hay Productos agregados...</p>
+    <!-- tabla de productos -->
+    <table class="table table-bordered table-striped" *ngIf="Product.length > 0">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col center">Opcion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of Product | FilterPipe: queryString; let x = index">
+        <th scope="row">{{x+1}}</th>
+        <td>{{product.nombre}}</td>
+        <td>{{product.tipo}}</td>
+        <td>{{product.precio}}</td>
+        <td>{{product.cantidad}}</td>
+        <td class="text-center edit-block">
+          <span class="edit" [routerLink]="['/edit/', product._id]">
+            <button type="button" class="btn btn-info btn-sm">Editar</button>
+          </span>
+          <span class="delete" (click)="removeProduct(product, x)">
+            <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
